@@ -1,0 +1,31 @@
+{
+  "name": "webserver",
+  "version": "0.0.0",
+  "description": "Web server for ICDataServer.jl",
+  "private": true,
+  "scripts": {
+    "start": "supervisor ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PainterQubits/ICWebServer.git"
+  },
+  "author": "Andrew J. Keller",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PainterQubits/ICWebServer/issues"
+  },
+  "homepage": "https://github.com/PainterQubits/ICWebServer#readme",
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "express-basic-auth": "^1.1.3",
+    "jade": "~1.11.0",
+    "lodash": "^4.17.4",
+    "morgan": "~1.9.0",
+    "pg": "^7.4.1",
+    "serve-favicon": "~2.4.5"
+  }
+}
