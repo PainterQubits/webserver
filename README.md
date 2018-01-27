@@ -1,7 +1,17 @@
 To run the server:
 
 - Make a JSON file called users.json in the root level of the webserver directory.
-  Populate it with allowed usernames and passwords, e.g. `{"someuser":"somepassword", ...}`.
+  Populate it with allowed usernames and passwords, e.g.
+  ```
+  {
+    "postgresuser": "username",
+    "postgrespw": "password",
+    "webauth": {
+      "someuser":"somepassword", 
+      ...
+    }
+  }
+  ```
   At best the authentication level is a mild deterrent so don't reuse passwords from
   elsewhere. The file is at least ignored by git to avoid leaking passwords to Github.
 - `npm start` in the package directory.
