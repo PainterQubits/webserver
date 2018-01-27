@@ -7,7 +7,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs')
 var path = require('path')
-var index = require('./routes/index');
 var _ = require('lodash');
 
 var app = express();
@@ -20,10 +19,11 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 var userdata = JSON.parse(fs.readFileSync(path.join(__dirname, 'users.json'), 'utf8'));
 app.use(basicAuth({
-    users: userdata,
+    users: userdata.webauth,
     challenge: true,
     realm: 'icdataserver'
 }))
+var index = require('./routes/index');
 
 app.use('/', express.static(__dirname + '/static'));
 
@@ -42,8 +42,6 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -55,4 +53,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+module.exports = app

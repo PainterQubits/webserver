@@ -2,23 +2,27 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const os = require('os');
+const fs = require('fs');
 const _ = require('lodash');
+const app = require('../app');
 
-const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/juliatests'
+var userdata = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'users.json'), 'utf8'));
+var defstr = 'postgres://' + userdata.postgresuser + ':' + userdata.postgrespw + '@localhost:5432/icdataserver'
+const connectionString = process.env.DATABASE_URL || defstr
 const {Pool} = require('pg');
 const pool = new Pool({connectionString: connectionString})
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    console.log(path.join(__dirname + '/index.html'))
   res.render(path.join(__dirname + '/index.html'));
 });
 
-router.get('/listusers', (req, res, next) => {
-  pool.query('SELECT * FROM users')
-    .then(d => res.json(d.rows))
-    .catch(e => console.error(e.stack));
-});
+// Prefer not to leak this
+// router.get('/listusers', (req, res, next) => {
+//   pool.query('SELECT * FROM users')
+//     .then(d => res.json(d.rows))
+//     .catch(e => console.error(e.stack));
+// });
 
 router.get('/listjobs/:start/:stop', (req, res, next) => {
   var start = req.params.start
