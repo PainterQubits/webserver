@@ -19,3 +19,5 @@ To run the server:
 This handles serving up web pages and server-side PostgreSQL queries. The web page itself is
 hosted in another repository, [PainterQubits/webfrontend](https://github.com/PainterQubits/webfrontend).
 See instructions there for how to build the webpage and serve it using this repository.
+
+Copyright © 2019, California Institute of Technology. All rights reserved. Neither the name of the California Institute of Technology (“Caltech”) nor the names of its contributors (and/or sponsors) may be used to endorse or promote products derived from this software without specific prior written permission.
